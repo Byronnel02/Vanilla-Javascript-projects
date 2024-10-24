@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Questions</title>
+</head>
+<style>
+body {
+    margin: 0px;
+    padding: 0px;
+ 
+    z-index: 0;
+}
+.container {
+    background-color: rgba(231, 228, 228, 0);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div h1 {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 40px;
+}
+
+.question-container {
+    width: 50%;
+    margin: 25px;
+    box-shadow: 0px 0px 15px 0px rgba(99, 100, 100, 0.48);
+    border: 1px solid rgba(99, 100, 100, 0.48);
+    box-sizing: border-box;
+}
+
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    z-index: 1;
+}
+
+.question p {
+    padding-left: 10px;
+}
+
+.dropdown {
+    padding: 15px;
+    cursor: pointer;
+
+}
+
+.answer {
+    width: 90%;
+    padding: 10px;
+    display: none;
+    justify-content: center;
+}
+
+.show-text .answer {
+    display: flex;
+    animation: open 0.3s  ease-out forwards;
+}
+
+
+
+.minus-icon {
+    display: none;
+}
+
+.show-text .minus-icon {
+    display: inline;
+}
+
+show-text .plus-icon {
+    display: none;
+}
+
+@keyframes open {
+    0%{
+        opacity: 0;
+        transform : translateY(-50%);
+        border-top: 0px solid rgba(99, 100, 100, 0.48);
+    }
+
+    100%{
+        opacity: 1;
+        transform : translateY(00%);
+        border-top: 1px solid rgba(99, 100, 100, 0.48);
+
+    }
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>General questions</h1>
+        <!-- 1 -->
+        <div class="question-container">
+            <div class="question"> 
+                <p>Do you accept all major credit cards?</p>
+                <div class="dropdown">
+                    <span class="plus-icon">
+                        <i class="fa-solid fa-plus"></i>
+                    </span>
+                    
+                    <span class="minus-icon">
+                        <i class="fa-solid fa-minus fa-lg"></i>
+                    </span>
+                    
+                </div>
+            </div>
+            <div class="answer">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus dolorum rem suscipit quia earum, nulla non maiores ipsam fugit temporibus. Excepturi, quos. Atque, labore sequi. Eius voluptate at tenetur numquam.
+            </div>
+        </div>
+        <!-- 2 -->
+        <div class="question-container">
+            <div class="question"> 
+                <p>Do you accept all major credit cards?</p>
+                <div class="dropdown">
+                    <span class="plus-icon">
+                        <i class="fa-solid fa-plus"></i>
+                    </span>
+                    
+                    <span class="minus-icon">
+                        <i class="fa-solid fa-minus fa-lg"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="answer">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus dolorum rem suscipit quia earum, nulla non maiores ipsam fugit temporibus. Excepturi, quos. Atque, labore sequi. Eius voluptate at tenetur numquam.
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="question-container">
+            <div class="question"> 
+                <p>Do you accept all major credit cards?</p>
+                <div class="dropdown">
+                    <span class="plus-icon">
+                        <i class="fa-solid fa-plus"></i>
+                    </span>
+                    
+                    <span class="minus-icon">
+                        <i class="fa-solid fa-minus fa-lg"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="answer">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus dolorum rem suscipit quia earum, nulla non maiores ipsam fugit temporibus. Excepturi, quos. Atque, labore sequi. Eius voluptate at tenetur numquam.
+            </div>
+        </div>
+    </div>
+
+<script>
+  
+  "use strict"
+  
+// const containers =  document.querySelectorAll('.question-container')
+// const answer = document.querySelector('.answer') 
+// const buttons = document.querySelectorAll('.dropdown')
+// const showText = document.querySelector('.show-text')
+
+// buttons.forEach(function (btn) {
+//   btn.addEventListener("click", function(e) {
+//     const question = e.currentTarget.parentElement.parentElement
+    
+//     question.classList.toggle("show-text")
+    
+//  		const plusIcon = 			 												   			
+// e.currentTarget.querySelector('.plus-icon');
+//     plusIcon.classList.toggle("hide-plus");
+//   });
+  
+
+// });
+
+const questions = document.querySelectorAll(".question-container")
+
+
+
+questions.forEach((question) => {
+  const btn = question.querySelector(".dropdown")
+  const plusbtn = question.querySelector(".plus-icon")
+  const minusbtn = question.querySelector(".minus-icon")
+
+  
+  btn.addEventListener("click", () => {
+    questions.forEach((item) => {
+        if(item !== question) {
+            item.classList.remove("show-text")
+            item.querySelector(".minus-icon").style.display = "none"
+            item.querySelector(".plus-icon").style.display = "inline"
+        }
+       })
+    question.classList.toggle("show-text")
+    plusbtn.style.display = question.classList.contains("show-text") ? "none" : "inline"
+    minusbtn.style.display = question.classList.contains("show-text") ? "inline" : "none"
+  })
+})
+
+
+
+</script>
+ 
+</body>
+</html>
